@@ -15,29 +15,36 @@ class VisiteRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Visite::class);
     }
-
-    //    /**
-    //     * @return Visite[] Returns an array of Visite objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('v')
-    //            ->andWhere('v.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('v.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Visite
-    //    {
-    //        return $this->createQueryBuilder('v')
-    //            ->andWhere('v.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    
+    /**
+     * Retourne toutes les visites triées sur un champ
+     * @param type $champ
+     * @param type $ordre
+     * @return Visite[]
+     */
+    public function findAllOrderBy($champ, $ordre): array {
+        
+        /**
+         * permet de créer une requête de type "select"
+         */
+        return $this->createQueryBuilder('v')
+                
+                /**
+                 * permet d'ajouter l'ordre "ORDER BY" dans la requête. 2 paramètres sont attendus : le
+                 * nom du champ (ici on utilise le paramètre $champ mais sans oublier de le faire précéder de l'alias
+                 * de la table) et le type de tri ('ASC' ou 'DESC', là on utilise le paramètre $ordre).
+                 */
+                ->orderBy('v.'.$champ, $ordre)
+                
+                /**
+                 * permet d'exécuter la requête.
+                 */
+                ->getQuery()
+                
+                /**
+                 * permet de récupérer le résultat sous forme d'un tableau 
+                 * d'objets du type de l'entity, donc ici, du type Visite.
+                 */
+                ->getResult();
+    }
 }

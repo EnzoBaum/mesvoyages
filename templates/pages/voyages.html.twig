@@ -4,10 +4,30 @@
     <table class ="table table-striped">
         <thread>
             <tr>
-                <th class ="text-left" scope="col">Ville</th>
-                <th class ="text-left" scope="col">Pays</th>
-                <th class ="text-end" scope="col">Note</th>
-                <th class ="text-center" scope="col">Date</th>
+                <th class ="text-left" scope="col">
+                    Ville
+                    <a href="{{ path('voyages.sort', {champ:'ville', ordre:'ASC'}) }}"
+                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('voyages.sort', {champ:'ville', ordre:'DESC'}) }}"
+                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
+                <th class ="text-left" scope="col">
+                    Pays
+                    <a href="{{ path('voyages.sort', {champ:'pays', ordre:'ASC'}) }}"
+                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('voyages.sort', {champ:'pays', ordre:'DESC'}) }}"
+                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
+                <th class ="text-end" scope="col">
+                    Note
+                    <a href="{{ path('voyages.sort', {champ:'note', ordre:'ASC'}) }}"
+                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('voyages.sort', {champ:'note', ordre:'DESC'}) }}"
+                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
+                <th class ="text-center" scope="col">
+                    Date
+                    <a href="{{ path('voyages.sort', {champ:'datecreation', ordre:'ASC'}) }}"
+                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('voyages.sort', {champ:'datecreation', ordre:'DESC'}) }}"
+                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
             </tr>
         </thread>
         <tbody>
