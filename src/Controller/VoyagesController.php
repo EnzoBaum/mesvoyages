@@ -28,6 +28,14 @@ class VoyagesController extends AbstractController {
         ['visites' => $visites]);
     }
     
+    #[Route('/voyages/recherche/{champ}', name: 'voyages.findallequal')]
+    public function findAllEqual($champ, \Symfony\Component\HttpFoundation\Request $request): Response {
+        $valeur = $request->get("recherche");
+        $visites = $this->repository->findByEqualValue($champ, $valeur);
+        return $this->render("pages/voyages.html.twig", 
+            ['visites' => $visites]);
+    }
+    
     /**
     * 
     * @var VisiteRepository

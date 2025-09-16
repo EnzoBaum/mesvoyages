@@ -4,25 +4,37 @@
     <table class ="table table-striped">
         <thread>
             <tr>
-                <th class ="text-left" scope="col">
+                <th class ="text-left align-top" scope="col">
                     Ville
                     <a href="{{ path('voyages.sort', {champ:'ville', ordre:'ASC'}) }}"
                     <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('voyages.sort', {champ:'ville', ordre:'DESC'}) }}"
                     <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
-                <th class ="text-left" scope="col">
+                    <form class="form-inline mt-l" method="POST" action ="{{ path('voyages.findallequal', {champ:'ville'}) }}">  
+                        <div class="form-group mr-l mb-2">
+                            <input type="text" class="sm" name="recherche">
+                            <button type="submit" class="btn btn-primary mb-2 btn-sm">filtrer</button>
+                        </div>
+                    </form>
+                <th class ="text-left align-top" scope="col">
                     Pays
                     <a href="{{ path('voyages.sort', {champ:'pays', ordre:'ASC'}) }}"
                     <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('voyages.sort', {champ:'pays', ordre:'DESC'}) }}"
                     <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
-                <th class ="text-end" scope="col">
+                    <form class="form-inline mt-l" method="POST" action ="{{ path('voyages.findallequal', {champ:'pays'}) }}">  
+                        <div class="form-group mr-l mb-2">
+                            <input type="text" class="sm" name="recherche">
+                            <button type="submit" class="btn btn-primary mb-2 btn-sm">filtrer</button>
+                        </div>
+                    </form>    
+                <th class ="text-end align-top" scope="col">
                     Note
                     <a href="{{ path('voyages.sort', {champ:'note', ordre:'ASC'}) }}"
                     <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('voyages.sort', {champ:'note', ordre:'DESC'}) }}"
                     <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
-                <th class ="text-center" scope="col">
+                <th class ="text-center align-top" scope="col">
                     Date
                     <a href="{{ path('voyages.sort', {champ:'datecreation', ordre:'ASC'}) }}"
                     <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
