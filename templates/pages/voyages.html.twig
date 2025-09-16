@@ -1,53 +1,48 @@
 {% extends "basefront.html.twig" %}
-
 {% block body %}
-    <table class ="table table-striped">
-        <thread>
-            <tr>
-                <th class ="text-left align-top" scope="col">
+    <table class="table table-striped">
+        <thead>
+            <tr>        
+                <th class="text-left align-top" scope="col">
                     Ville
-                    <a href="{{ path('voyages.sort', {champ:'ville', ordre:'ASC'}) }}"
-                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
-                    <a href="{{ path('voyages.sort', {champ:'ville', ordre:'DESC'}) }}"
-                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
-                    <form class="form-inline mt-l" method="POST" action ="{{ path('voyages.findallequal', {champ:'ville'}) }}">  
-                        <div class="form-group mr-l mb-2">
-                            <input type="text" class="sm" name="recherche">
+                    <a href="{{ path('voyages.sort', {champ:'ville', ordre:'ASC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('voyages.sort', {champ:'ville', ordre:'DESC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>                    
+                    <form class="form-inline mt-1" method="POST" action="{{ path('voyages.findallequal', {champ:'ville'}) }}">
+                        <div class="form-group mr-1 mb-2">
+                            <input type="text" class="sm" name="recherche">                        
                             <button type="submit" class="btn btn-primary mb-2 btn-sm">filtrer</button>
                         </div>
-                    </form>
-                <th class ="text-left align-top" scope="col">
+                    </form>                    
+                </th>
+                <th class="text-left align-top" scope="col">
                     Pays
-                    <a href="{{ path('voyages.sort', {champ:'pays', ordre:'ASC'}) }}"
-                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
-                    <a href="{{ path('voyages.sort', {champ:'pays', ordre:'DESC'}) }}"
-                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
-                    <form class="form-inline mt-l" method="POST" action ="{{ path('voyages.findallequal', {champ:'pays'}) }}">  
-                        <div class="form-group mr-l mb-2">
-                            <input type="text" class="sm" name="recherche">
+                    <a href="{{ path('voyages.sort', {champ:'pays', ordre:'ASC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('voyages.sort', {champ:'pays', ordre:'DESC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>                    
+                    <form class="form-inline mt-1" method="POST" action="{{ path('voyages.findallequal', {champ:'pays'}) }}">
+                        <div class="form-group mr-1 mb-2">
+                            <input type="text" class="sm" name="recherche">                        
                             <button type="submit" class="btn btn-primary mb-2 btn-sm">filtrer</button>
                         </div>
-                    </form>    
-                <th class ="text-end align-top" scope="col">
+                    </form> 
+                </th>
+                <th class="text-end align-top" scope="col">
                     Note
-                    <a href="{{ path('voyages.sort', {champ:'note', ordre:'ASC'}) }}"
-                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
-                    <a href="{{ path('voyages.sort', {champ:'note', ordre:'DESC'}) }}"
-                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
-                <th class ="text-center align-top" scope="col">
+                    <a href="{{ path('voyages.sort', {champ:'note', ordre:'ASC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('voyages.sort', {champ:'note', ordre:'DESC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>                    
+                </th>
+                <th class="text-center align-top" scope="col">
                     Date
-                    <a href="{{ path('voyages.sort', {champ:'datecreation', ordre:'ASC'}) }}"
-                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
-                    <a href="{{ path('voyages.sort', {champ:'datecreation', ordre:'DESC'}) }}"
-                    <a href="#" class ="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>
+                    <a href="{{ path('voyages.sort', {champ:'datecreation', ordre:'ASC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('voyages.sort', {champ:'datecreation', ordre:'DESC'}) }}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">></a>                    
+                </th>
             </tr>
-        </thread>
+        </thead>
         <tbody>
             {% for visite in visites %}
                 <tr>
                     <td>
                         <h5 class="text-primary">
-                            <a href="#">{{ visite.ville }}</a>
+                            <a href="{{ path('voyages.showone', {id:visite.id}) }}">{{ visite.ville }}</a>
                         </h5>
                     </td>
                     <td>
@@ -60,15 +55,15 @@
                                     {{ visite.note }}/20
                                 </div>
                             {% else %}
-                                <div class ="text-success">
+                                <div class="text-success">
                                     {{ visite.note }}/20
-                                </div>
+                                </div>                  
                             {% endif %}
                         </strong>
                     </td>
                     <td class="text-center">
                         {{ visite.datecreationstring }}
-                    </td>
+                    </td>                    
                 </tr>
             {% endfor %}
         </tbody>
