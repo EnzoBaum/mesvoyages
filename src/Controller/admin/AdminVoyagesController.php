@@ -48,7 +48,7 @@ class AdminVoyagesController extends AbstractController {
         ]);
     }
     
-        #[Route('/admin/ajout', name: 'admin.voyage.ajout')]
+    #[Route('/admin/ajout', name: 'admin.voyage.ajout')]
     public function ajout(Request $request): Response {
         $visite = new Visite();
         $formVisite = $this->createForm(VisiteType::class, $visite);

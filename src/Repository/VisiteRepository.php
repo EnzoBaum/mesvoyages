@@ -82,6 +82,11 @@ class VisiteRepository extends ServiceEntityRepository
         $this->getEntityManager()->flush();
     }
     
+    /**
+     * Ajoute une visite
+     * @param Visite $visite
+     * @return void
+     */
     public function add(Visite $visite): void {
         
         $this->getEntityManager()->persist($visite);
